@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -25,17 +26,17 @@ class AppServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
         ->group(function () {
-            Route::get('/', function () {
-                $user = auth()->user();
+            $user = Auth::user();
 
-                if ($user && $user->role === 'admin') {
-                    return redirect()->route('admin.dashboard');
-                } elseif ($user && $user->role === 'employee') {
-                    return redirect()->route('employee.score');
-                }
+            if ($user && $user->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            } elseif ($user && $user->role === 'employee') {
+                return redirect()->route('employee.dashboard');
+            } elseif ($user && $user->role === 'division_head') {
+                return redirect()->route('division.dashboard');
+            }
 
-                return redirect()->route('login');
-            });
+            return redirect('/login');
         });
     }
 }

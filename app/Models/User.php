@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'nip',
+        'position',
     ];
 
     /**
@@ -55,5 +58,17 @@ class User extends Authenticatable
     public function isEmployee(): bool
     {
         return $this->role === 'employee';
+    }
+
+    public function scores()
+    {
+        return $this->hasMany(EmployeeScore::class);
+    }
+
+    public function aspects()
+    {
+        return $this->belongsToMany(Aspect::class, 'employee_scores')
+                    ->withPivot('score')
+                    ->withTimestamps();
     }
 }
