@@ -8,8 +8,17 @@
                         <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
                     </svg>
                 </button>
-                <a href="#" class="flex ms-2 md:me-24">
-                    <img src="{{ asset('assets/logo-main.svg') }}" class="h-12 me-3" alt="36Degrees Logo" />
+                @php
+                    $user = Auth::user();
+                @endphp
+                <a href="{{ $user->role === 'division_head' ? route('division.dashboard') : route('employee.dashboard') }}"  class="flex items-end">
+                    <div  class="flex ms-2 ">
+                        <img src="{{ asset('assets/Logo 36 Degrees-White-03.png') }}" class="w-10" alt="36Degrees Logo" />
+                    </div>
+                    <div class="flex flex-col">
+                        <h5 class="text-white font-semibold">36 Degrees Interior</h5>
+                        <p class="text-white font-semibold text-[9px] -mt-1">Solution for Customized Furniture</p>
+                    </div>
                 </a>
             </div>
         </div>
@@ -21,9 +30,6 @@
         <div class="flex flex-col h-full justify-between">
             <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
                 <ul class="space-y-2 font-medium">
-                    @php
-                        $user = Auth::user();
-                    @endphp
                     <li>
                         <a href="{{ $user->role === 'division_head' ? route('division.dashboard') : route('employee.dashboard') }}" class="flex items-center p-2 text-gray-900 rounded-lg group {{ request()->routeIs('division.dashboard') || request()->routeIs('employee.dashboard') ? 'bg-[#e3c8ab]' : ' hover:bg-gray-100' }}">
                             <div class="p-2.5 rounded-lg shadow {{ request()->routeIs('division.dashboard') || request()->routeIs('employee.dashboard') ? 'bg-white' : 'bg-[#e3c8ab]' }}">
