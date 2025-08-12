@@ -45,6 +45,9 @@ Route::middleware(['auth', 'role:admin'])->prefix('director')->group(function ()
 
 Route::middleware(['auth', 'role:division_head'])->prefix('division')->group(function () {
     Route::get('/employer', [DivisionEmployeeController::class, 'index'])->name('division.employer');
+    Route::post('/employer', [DivisionEmployeeController::class, 'store'])->name('division.employer.store');
+    Route::put('/employer/{id}', [DivisionEmployeeController::class, 'update'])->name('division.employer.update');
+    Route::delete('/employer/{id}', [DivisionEmployeeController::class, 'destroy'])->name('division.employer.destroy');
 
     Route::get('/score-result', [DivisionScoreResultController::class, 'index'])->name('division.dashboard');
 

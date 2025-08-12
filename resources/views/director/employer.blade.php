@@ -222,7 +222,8 @@
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                                                            <input type="email" name="email" value="{{ $item->email }}" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#B9752E] focus:border-[#B9752E] block w-full p-2.5" placeholder="Contoh:
+                                                            <input type="email" name="email" value="{{ $item->email }}" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#B9752E] focus:border-[#B9752E] block w-full p-2.5" placeholder="Contoh: john@example.com" required />
+                                                        </div>
                                                         <div class="mb-3">
                                                             <label for="nip" class="block mb-2 text-sm font-medium text-gray-900">NIP</label>
                                                             <input type="text" name="nip" value="{{ $item->nip }}" id="nip" placeholder="Contoh: 1234xxxxxxx" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#B9752E] focus:border-[#B9752E] block w-full p-2.5" required />
