@@ -115,6 +115,9 @@
                                         Nama
                                     </th>
                                     <th scope="col" class="px-6 py-3">
+                                        Email
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
                                         Divisi
                                     </th>
                                     <th scope="col" class="px-6 py-3">
@@ -136,6 +139,9 @@
                                         </td>
                                         <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                             {{ $item->name }}
+                                        </td>
+                                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                            {{ $item->email }}
                                         </td>
                                         <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                             {{ $item->position }}
@@ -203,10 +209,10 @@
                                                 <div class="pt-4">
                                                     <img src="{{ asset('assets/Logo 36 Degrees-03.png') }}" alt="36 Degrees Logo" class="w-16 mx-auto">
                                                     <h3 class="text-xl text-center font-semibold text-gray-900">Edit Karyawan</h3>
-                                                    <p class="text-xs text-gray-400 text-center">Kami Merancang untuk Mencerminkan Kepribadian dan Selera Anda</p>
+                                                    <p class="text-xs text-gray-400 text-center mb-3">Kami Merancang untuk Mencerminkan Kepribadian dan Selera Anda</p>
                                                 </div>
                                                 <!-- Modal body -->
-                                                <div class="p-4 md:py-5 md:px-8">
+                                                <div class="p-4 md:py-5 md:px-8 overflow-y-auto max-h-[calc(100vh-200px)]">
                                                     <form class="" action="{{ route('admin.employer.update', $item->id) }}" method="POST">
                                                         @csrf
                                                         @method('PUT')
@@ -214,6 +220,9 @@
                                                             <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
                                                             <input type="text" name="nama" value="{{ $item->name }}" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#B9752E] focus:border-[#B9752E] block w-full p-2.5" placeholder="Contoh: John Doe" required />
                                                         </div>
+                                                        <div class="mb-3">
+                                                            <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+                                                            <input type="email" name="email" value="{{ $item->email }}" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#B9752E] focus:border-[#B9752E] block w-full p-2.5" placeholder="Contoh:
                                                         <div class="mb-3">
                                                             <label for="nip" class="block mb-2 text-sm font-medium text-gray-900">NIP</label>
                                                             <input type="text" name="nip" value="{{ $item->nip }}" id="nip" placeholder="Contoh: 1234xxxxxxx" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#B9752E] focus:border-[#B9752E] block w-full p-2.5" required />
@@ -260,7 +269,7 @@
         </div>
 
         {{-- Modal tambah karyawan --}}
-        <div id="modal-add-karyawan" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div id="modal-add-karyawan" tabindex="-1" aria-hidden="true" class="hidden overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
             <div class="relative p-4 w-full max-w-md max-h-full">
                 <!-- Modal content -->
                 <div class="relative bg-white rounded-lg shadow-sm">
@@ -268,15 +277,19 @@
                     <div class="pt-4">
                         <img src="{{ asset('assets/Logo 36 Degrees-03.png') }}" alt="36 Degrees Logo" class="w-16 mx-auto">
                         <h3 class="text-xl text-center font-semibold text-gray-900">Tambah Karyawan</h3>
-                        <p class="text-xs text-gray-400 text-center">Kami Merancang untuk Mencerminkan Kepribadian dan Selera Anda</p>
+                        <p class="text-xs text-gray-400 text-center mb-3">Kami Merancang untuk Mencerminkan Kepribadian dan Selera Anda</p>
                     </div>
                     <!-- Modal body -->
-                    <div class="p-4 md:py-5 md:px-8">
+                    <div class="p-4 md:py-5 md:px-8 overflow-y-auto max-h-[calc(100vh-200px)]">
                         <form class="" action="{{ route('admin.employer.store') }}" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
                                 <input type="text" name="nama" id="nama" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#B9752E] focus:border-[#B9752E] block w-full p-2.5" placeholder="Contoh: John Doe" required />
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
+                                <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#B9752E] focus:border-[#B9752E] block w-full p-2.5" placeholder="Contoh: johndoe@36degrees.com" required />
                             </div>
                             <div class="mb-3">
                                 <label for="nip" class="block mb-2 text-sm font-medium text-gray-900">NIP</label>
