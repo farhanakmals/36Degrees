@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="icon" href="{{ asset('assets/logo-circle.svg') }}" type="image/svg+xml">
+        <link rel="icon" type="image/x-icon" href="{{ asset('assets/Logo 36 Degrees-White-03.png') }}">
         <title>{{ config('app.name', '36Degrees') }}</title>
 
         <!-- Fonts -->
