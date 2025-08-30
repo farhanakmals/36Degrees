@@ -66,7 +66,7 @@
                                     </th>
                                     @if ($grouped->isNotEmpty())
                                         @foreach (array_keys($grouped->first()) as $key)
-                                            @if (!in_array($key, ['nama', 'divisi', 'rata_rata']))
+                                            @if (!in_array($key, ['nama', 'divisi', 'rata_rata', 'reward']))
                                                 <th scope="col" class="px-6 py-3">
                                                     {{ $key }}
                                                 </th>
@@ -94,7 +94,7 @@
                                             {{ $item['divisi'] }}
                                         </td>
                                         @foreach (array_keys($grouped->first()) as $key)
-                                            @if (!in_array($key, ['nama', 'divisi', 'rata_rata']))
+                                            @if (!in_array($key, ['nama', 'divisi', 'rata_rata', 'reward']))
                                                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                                                     {{ number_format($item[$key], 2, ',', '.') }}
                                                 </td>

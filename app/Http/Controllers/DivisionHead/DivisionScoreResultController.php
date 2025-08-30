@@ -72,6 +72,7 @@ class DivisionScoreResultController extends Controller
                 $totalSum += $score;
             }
             $row['rata_rata'] = $totalSum != 0 ? round($totalSum / 3, 2) : 0;
+            $row['reward'] = $totalSum >= 100 ? 'Insentif' : ($totalSum >= 85 ? 'Voucher' : '-');
             return $row;
         });
 
